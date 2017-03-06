@@ -1,12 +1,8 @@
-// General Assembly, WDI (Web Development Immersive) Remote, Cohort 02 (R2D2)
-// Copyright (C) 2016 Matt Brendzel under the GNU General Public License.
-// See LICENSE for details.
-
 /// Data & Core Business Logic ///
 const Stopwatch = {
   tickClock: function(){
     if (Stopwatch.isRunning) {
-      setTimeout(Stopwatch.tickClock, 10); // trigger next clock tick
+      setTimeout(Stopwatch.tickClock, 10);
       Stopwatch.advanceTenMillisecs();
       AppController.handleClockTick();
     }
@@ -18,53 +14,77 @@ const Stopwatch = {
   laps: [],
   // DO NOT EDIT ABOVE THIS LINE
   advanceTenMillisecs: function(){
-    // Your Code Here
+    Stopwatch.millisecs += 10;
+    if (Stopwatch.millisecs >= 1000) {
+      Stopwatch.millisecs -= 1000;
+      Stopwatch.secs++;
+    }
+    if (Stopwatch.secs >= 60) {
+      Stopwatch.secs -= 60;
+      Stopwatch.mins++;
+    }
   },
   reset: function(){
-    // Your Code Here
+    Stopwatch.mins = 0;
+    Stopwatch.secs = 0;
+    Stopwatch.millisecs = 0;
+    Stopwatch.laps = [];
   },
   start: function(){
-    // Your Code Here
+    if (!Stopwatch.isRunning) {
+      Stopwatch.isRunning = true;
+      Stopwatch.tickClock();
+    }
   },
   stop: function(){
-    // Your Code Here
+    Stopwatch.isRunning = false;
   },
-  lap: function(){
-    // Your Code Here
-  }
 };
 
 /// User Interface ///
 const ViewEngine = {
   updateTimeDisplay: function(mins, secs, millisecs){
-    // Your Code Here
-  },
-  updateLapListDisplay: function(laps){
-    // Your Code Here
-  },
-};
+    document.getElementById('millisecs').innerHTML = ViewHelpers.zeroFill(millisecs/10, 2);
+    document.getElementById('secs').innerHTML = ViewHelpers.zeroFill(secs, 2);
+    document.getElementById('mins').innerHTML = ViewHelpers.zeroFill(mins, 2);
+    },
+//I was unable to successfully merge my Jquery within in the code
+//... had to vanilla it up with just javascript .. eyeroll .. -__-!
+//
+    }
 const ViewHelpers = {
   zeroFill: function(number, length){
-    // Your Code Here
+    var str = number.toString();
+    let numZeroes = Math.max(length - str.length, 0);
+    for( var i = 0; i < (length - str.length); i++){
+      str = '0' + str;
+    }
+    return str;
   },
 };
 
 /// Top-Level Application Code ///
 const AppController = {
   handleClockTick: function(){
-    // Your Code Here
+    ViewEngine.updateTimeDisplay(Stopwatch.mins, Stopwatch.secs, Stopwatch.millisecs);
   },
   handleClickStart: function() {
-    // Your Code Here
+    if (!Stopwatch.isRunning) { Stopwatch.start(); }
   },
+
   handleClickStopReset: function(){
-    // Your Code Here
-  },
-  handleClickLap: function(){
-    // Your Code Here
+    if (Stopwatch.isRunning) {
+      Stopwatch.stop();
+    } else {
+      Stopwatch.reset();
+      ViewEngine.updateTimeDisplay(0, 0, 0);
+    }
   }
 };
 
 window.onload = function(){
   // Attach AppController methods to the DOM as event handlers here.
+  document.getElementById('start').onclick = AppController.handleClickStart;
+  document.getElementById('stop').onclick = AppController.handleClickStopReset;
 };
+

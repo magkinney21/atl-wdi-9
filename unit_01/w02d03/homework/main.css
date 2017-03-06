@@ -7,17 +7,25 @@ See LICENSE for details.
 body {
   padding: 10px 20% 10px;
   text-align: center;
-}
+  font-family:cursive;
+ background-image: url("https://lh5.ggpht.com/6u9hcqbWSLV6Grq6iRw2lMKS2w5ufFBgYzOgyDdiT5UeYEHObgsnOuzCbjodLjajwKY=h900");
+ background-repeat: no-repeat;
+ background-size: 120%;
+  }
 
-main, aside {
+main{
   padding: 10px;
-  border: 1px black solid;
-  background-color: #EEEEEE;
+  border: 5px black solid;
+  border-radius:50px;
+  background-color: rgba(248,227,175,.8);
+  margin-top: 120px;
+
 }
 
 main section {
   padding: 0 30% 0;
   font-size: 3em;
+  font-family:cursive;
 }
 
 main section button {
@@ -25,11 +33,11 @@ main section button {
   min-width: 5em;
 }
 
-aside hr {
-  width: 60%;
+button{
+  border: 2px solid black;
+  border-radius:50px;
+  background-color:white;
 }
-
-aside ol {
-  font-size: 2em;
-  margin: 0 30% 0;
+button:hover{
+  background-color:#7C6A19;
 }
