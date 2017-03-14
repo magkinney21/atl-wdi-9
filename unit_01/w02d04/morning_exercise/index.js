@@ -5,8 +5,30 @@
 /// DO NOT EDIT ABOVE THIS LINE ///
 
 var makeChange = function(price, payment) {
-  // Your Code Here
-};
+var remainingChange= Math.round(100*payment - 100*price);
+if (remainingChange < 0 ) {return [0,0,0,0]};
+var total = [], quantity;
+ if (exactChange = 0) {return [0,0,0,0]
+  var exactChange= 0;
+  }; if (remainingChange = > 1) return[4 * .25] || [1,0,0,0];
+[25, 10, 5, 1].forEach(function(val){
+    quantity = Math.floor(changeLeft/val);
+    changeLeft -= quantity * val;
+    results.push(quantity);
+  })
+  }
+}
+
+//var makeChange = function(price, payment) {
+//var changeLeft = Math.round(100*payment - 100*price);
+//if (changeLeft < 0) {return [0,0,0,0]};
+//var results = [], quantity;
+//[25, 10, 5, 1].forEach(function(val){
+//quantity = Math.floor(changeLeft/val);
+//changeLeft -= quantity * val;
+//results.push(quantity);
+//});
+//return results;
 
 /// DO NOT EDIT BELOW THIS LINE ///
 module.exports = {

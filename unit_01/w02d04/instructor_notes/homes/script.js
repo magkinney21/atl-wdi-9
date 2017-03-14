@@ -40,3 +40,12 @@ var newHomes = [
     {address: "251 Grandview Road", sf: "3,800", bedrooms: 3, baths: 2, price: "$699,900"},
     {address: "28571 Manitoba", sf: "2,960", bedrooms: 4, baths: 3.5, price: "$775,000"}
 ];
+//
+//
+//
+//
+//
+//
+//
+//
+//
