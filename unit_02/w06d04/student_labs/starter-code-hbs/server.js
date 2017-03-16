@@ -8,33 +8,29 @@ var app         = express();
 var port        = process.env.PORT || 3000;
 /* set up the application params*/
 
-// log
-app.use( logger('dev'));
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+var todosController = require('./controllers/todos.js');
 
 /*Views*/
 app.set('view engine', 'hbs');
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
+// log
+app.use( logger('dev'));
+
+app.use(methodOverride('_method'));
+app.use('/todos', todosController);
 /* HOME */
 app.get('/', function(req,res) {
   res.send('This is our Home Page');
 });
 
 /* INDEX TODOS */
-app.get('/todos', function(req,res) {
-  var seededTodos = [
-    {
-      description: "get beer",
-      urgent: true
-    }, {
-      description: "dry cleaning",
-      urgent: false
-    }
-  ];
-
-  res.render('todos/index', {
-    todos: seededTodos
-  });
-});
 
 // Start server
 app.listen(port, function() {
