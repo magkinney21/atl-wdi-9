@@ -1,0 +1,11 @@
+<h1>The Crew</h1>
+<ul>
+  {{#each pirates}}
+    <button><li><a href="/pirates/{{@index}}">{{pirates}}</a></li></button>
+  {{/each}}
+</ul>
+<div>
+  <form action="/pirates/new">
+   <button id= "add"> <input type="submit" value="Add a New Crew Mate"/></button>
+  </form>
+</div>
