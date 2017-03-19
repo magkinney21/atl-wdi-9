@@ -1,0 +1,51 @@
+
+body {
+  background-image: url("https://cdn.suwalls.com/wallpapers/fantasy/skeleton-pirate-looking-at-a-macaw-25840-1920x1200.jpg");
+   background-size: 1480px 1060px;
+
+
+}
+h1{
+  color: white;
+  font-family: cursive;
+  text-shadow: 2px 2px grey;
+  font-size: 65px;
+
+}
+.Show{
+  font-size: 45px;
+  color: white;
+  text-align: center;
+  font-family:cursive;
+}
+a{
+  color: white;
+
+}
+ul , .container {
+  list-style-type: none;
+/*  text-align: center;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   align-items: center;
+   margin-left: 75px;
+}
+button{
+  border-radius: 45%;
+  background-color: white;
+  height: 45px;
+  width: 120px;
+  opacity: 0.4;
+  filter: alpha(opacity=50);
+  font-size: 8px;
+}
+span{
+  color: black;
+  font-weight: bolder;
+}
+.pirate-show{
+  font-size: 25px;
+  text-align: center;
+  margin-right:133px;
+

@@ -1,11 +1,12 @@
 <h1>The Flyest Pirates of Da 7 Cs</h1>
-
+<div class="container">
 <ul>
   {{#each pirates}}
-    <li><a href="/pirates/{{@index}}"><h2>{{name}}</h2></a></li>
-  {{/each}}
-</ul>
-
-<form action="/pirates/new">
-    <input type="submit" value="Create a New Pirate" />
+    <li><a href="/pirates/show"><h2>{{name}}</h2></a></li>
+   <button><li><a href="/pirates/new"><h2><span>add new pirate</h2></a></li></button>
+<form action="/pirates/{{@index}}?_method=DELETE" method="POST">
+    <li><input type="submit" value="DELETE" /></li>
 </form>
+{{/each}}
+</ul>
+</div>
