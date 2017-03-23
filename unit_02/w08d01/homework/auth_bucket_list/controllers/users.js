@@ -6,7 +6,7 @@ var List = require('../models/list.js');
 var authHelpers = require('../helpers/auth.js');
 
 //SHOW: create a GET "/" that displays all users on the index page
-router.get('/', function(req, res) {
+router.get('/',authHelpers.authorized , function(req, res) {
   User.find({})
   .exec(function(err, users){
     if (err) { console.log(err); }
@@ -20,8 +20,6 @@ router.get('/signup', function(req, res){
 });
 
 //SHOW: create a GET "/:id" route that shows the page ONLY IF it's the current user's session. Else, redirect to an error page that says "Oops! You are not authorized."
-
-
 
 
 //User registration
