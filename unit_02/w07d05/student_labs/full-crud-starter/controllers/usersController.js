@@ -10,32 +10,15 @@ router.get('/', function(req, res){
     .exec(function(err, users){
       if (err) { console.log(err); }
       console.log(users);
-      res.render('users/index', {
+      res.render('users/index.hbs', {
         users: users
       });
     });
 });
 
-// USER SHOW ROUTE
-router.get('/:id', function(req, res){
-  User.findById(req.params.id)
-  .exec(function(err, user) {
-    if (err) console.log(err);
-    res.render('users/show', {
-      user: user
-    });
-  });
-});
-
-// USER EDIT ROUTE
-router.get('/:id/edit', function(req, res) {
-  User.findById(req.params.id)
-  .exec(function(err, user) {
-    if (err) console.log(err);
-    res.render('users/edit.hbs', {
-      user: user
-    });
-  });
+// USER NEW ROUTE
+router.get('/new', function(req, res) {
+  res.render('users/new.hbs')
 });
 
 // USER CREATE ROUTE
@@ -48,7 +31,18 @@ router.post('/', function(req, res){
   user.save(function(err, user){
     if (err) { console.log(err); }
     console.log(user);
-    res.send(user);
+    res.redirect('/users')
+  });
+});
+
+// USER EDIT ROUTE
+router.get('/:id/edit', function(req, res) {
+  User.findById(req.params.id)
+  .exec(function(err, user) {
+    if (err) console.log(err);
+    res.render('users/edit.hbs', {
+      user: user
+    });
   });
 });
 
@@ -67,13 +61,25 @@ router.put('/:id', function(req, res){
   });
 });
 
+// USER SHOW ROUTE
+router.get('/:id', function(req, res){
+  User.findById(req.params.id)
+  .exec(function(err, user) {
+    if (err) console.log(err);
+    console.log(user);
+    res.render('users/show.hbs', {
+      user: user
+    });
+  });
+});
+
 // USER DESTROY
 router.delete('/:id', function(req, res){
   User.findByIdAndRemove(req.params.id)
   .exec(function(err, user) {
     if (err) console.log(err);
     console.log('User deleted!');
-    res.send("User deleted");
+    res.redirect('/users')
   });
 });
 
@@ -91,7 +97,7 @@ router.get('/:id/items', function(req, res){
     });
 });
 
-// ADD A NEW ITEM
+// CREATE ITEM
 router.post('/:id/items', function(req, res){
   User.findById(req.params.id)
   .exec(function(err, user){
@@ -112,7 +118,7 @@ router.delete('/:userId/items/:id', function(req, res){
   })
   .exec(function(err, item){
     if (err) console.log(err);
-    res.redirect('/users');
+    res.redirect('/users')
   });
 });
 
