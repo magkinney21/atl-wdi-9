@@ -29,17 +29,31 @@ app.use( logger('dev'));
 // CONTROLLERS
 //======================
 //for seed file, seed the database
-var seedController = require('./controllers/seeds.js');
-app.use('/seed', seedController);
+// var seedController = require('./controllers/seeds.js');
+// app.use('/seed', seedController);
 
-//for root directory, show all donuts
-var donutsController = require('./controllers/donuts.js');
-app.use('/', donutsController);
+// //for root directory, show all donuts
+// var donutsController = require('./controllers/donuts.js');
+// app.use('/', donutsController);
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/donut_store');
+
+var db = mongoose.connection;
+
+db.on('error', function(err){
+  console.log(err);
+});
 //======================
 // LISTENERS
 //======================
 //CONNECT MONGOOSE TO "donut_store"
 
+db.once('open', function() {
+  console.log("database has been connected!");
+});
 
+app.listen(4000, function(){
+  console.log("app listening on port 4000");
+});
 //CREATE THE MONGOOSE CONNECTION and SET APP TO LISTEN to 3000
