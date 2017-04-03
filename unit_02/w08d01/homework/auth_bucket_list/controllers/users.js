@@ -26,7 +26,7 @@ router.get('/:id', authHelpers.authorized, function(req, res) {
     if (err) console.log("Oops! You are not authorized.");
     console.log(user);
     // res.render('user/show.hbs', { user: user } );
-    res.render('users/show.hbs', { user } );
+    res.render('users/show.hbs', { user:user } );
   });
 })
 
@@ -44,7 +44,7 @@ router.post('/', authHelpers.createSecure, function(req, res){
     if (err) console.log(err);
     console.log(user);
     console.log(req.session.currentUser);
-    res.redirect('/users/login');
+    res.redirect('/users');
   });
 });
 

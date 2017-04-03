@@ -1,13 +1,18 @@
 <h1>User Name's Summer Bucket List</h1>
- <form action="/users/signup.hbs" method="post">
-  <div>
-    <label for ="email">email</label>
-    <input type="text" name="email">
-  <div>
+<h2>You are viewing: {{user.username}}</h2>
+    <a href="/users">Return to Users</a>
 
-  <div>
-    <label for= "password">password</label>
-    <input type="" name="email"></lable>
-  </div>
-<input type="submit" name="Submit">
-</form>
+    <div class="list-container">
+    <h2 id="user-name">{{user.username}}</h2>
+    <br>
+    <ul>
+      {{#each user.list}}
+      <li>List{{user.list.name}}</li>
+      <li>Completed?: {{user.list.completed}}</li>
+    <br>
+    {{/each}}
+    </ul>
+
+    <button><a href="/users/{{user.id}}/edit">Add New List</a></button>
+
+    </div>

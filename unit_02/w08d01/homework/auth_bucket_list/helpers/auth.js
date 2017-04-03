@@ -1,4 +1,4 @@
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user.js');
 
 function createSecure(req, res, next) {
@@ -31,9 +31,8 @@ function loginUser(req, res, next) {
 //your code here
 function authorized(req, res, next) {
     var currentUser = req.session.currentUser
-    var sessionStillValid = req.session.experiationtime > Date.now();
 
-  if (!currentUser || currentUser._id !== req.params.id  || !sessionStillValid) {
+  if (!currentUser || currentUser._id !== req.params.id ) {
     res.send({status: 404})
   } else {
     next()
