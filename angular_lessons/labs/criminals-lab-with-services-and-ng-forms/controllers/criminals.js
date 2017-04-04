@@ -8,7 +8,7 @@ var Criminal = require('../models/Criminal');
 router.get('/', function indexAction(request, response) {
   Criminal.find(function(error, criminals) {
     if(error) response.json({message: 'Could not find any criminal'});
-
+    console.log(criminals)
     response.json({criminals: criminals});
   }).select('-__v');
 });
