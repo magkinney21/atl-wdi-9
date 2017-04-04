@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- ADD ng-app to the html tag -->
-<html>
+<html ng-app='InfamousCriminals'>
 <head>
   <meta charset="UTF-8">
   <title>Infamous Criminals</title>
@@ -9,24 +8,20 @@
   <script src="js/criminalsController.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
   <h1>Infamous Criminals</h1>
+  <section ng-controller='CriminalsController as criminals'>
 
-<!-- ADD ng-controller to the section tag(did) -->
-  <section ng-controller=" CriminalsController as criminals">
-
-  <!-- FILL IN THE BLANKS!(did) -->
     <ul id="criminals">
-      <li ng-repeat="" data-id="">
+      <li ng-repeat="criminal in criminals.all">
         <strong>{{criminal.name}}</strong> <em>{{criminal.location}}</em> <span class='status {{criminal.status | lowercase }}'>{{criminal.status | uppercase}}</span>
-        <button class='delete' ng-click="">X</button>
+        <button class='delete' ng-click="criminals.deleteCriminal(criminal)">X</button>
       </li>
     </ul>
 
-<!-- ADD ng-submit to the form (did)-->
-    <form ng-submit="crimnals.addCriminal()" id="addCriminal">
+
+    <form ng-submit="criminals.addCriminal()" id="newCriminal">
       <div>
         <label for="newCriminal-name">Name:</label>
         <input type="text" id="newCriminal-name" ng-model="criminals.newCriminal.name" placeholder="Prof. Moriarty">
@@ -37,8 +32,6 @@
       </div>
       <div>
         <label for="newCriminal-status">Status:</label>
-
-<!-- ADD ng-model to the select tag (did) -->
         <select id="newCriminal-status" ng-model='criminals.newCriminal.status'>
           <option value="" disabled>- - Please Select One - -</option>
           <option value="Alive">Alive</option>
