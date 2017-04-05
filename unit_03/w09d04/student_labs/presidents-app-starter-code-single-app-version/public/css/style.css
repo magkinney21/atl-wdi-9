@@ -4,10 +4,12 @@ body {
   font-family: 'IM Fell Great Primer', serif;
   line-height: 1.5;
   margin: 1rem;
+  background: rgba(255,25,200,0.4);
 }
 
 h1 {
   font-family: 'IM Fell English SC', serif;
+  font-size: 30px;
 }
 
 em {
@@ -24,4 +26,10 @@ form.add-president {
 
 form.add-president div {
   margin-top: 0.618rem;
+}
+button{
+  background-color: transparent;
+  color:white;
+  border:none;
+  font-size: 20px;
 }

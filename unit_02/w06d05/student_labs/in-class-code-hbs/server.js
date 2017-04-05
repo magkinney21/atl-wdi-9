@@ -5,6 +5,8 @@ var express     = require('express');
 var hbs         = require('hbs');
 var bodyParser  = require('body-parser');
 var todosController = require('./controllers/todos.js');
+var todontsController = require('./controllers/todonts_Controller.js');
+var morgan = require('morgan');
 /* app settings*/
 var app         = express();
 var port        = process.env.PORT || 3000;
@@ -16,6 +18,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use( logger('dev'));
 app.use('/todos', todosController);
+app.use('/todonts', todontsController)
+app.use(morgan('combined'));
 
 /*Views*/
 app.set('view engine', 'hbs');

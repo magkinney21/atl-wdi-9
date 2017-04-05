@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="HappyApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Happy App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/ratingsController.js"></script>
+  </head>
+  <body>
+<h1>HappyApp</h1>
+<h3 class='tagline'>Generally average happiness over time, since 1991</h3>
+
+<section id="ratings" ng-controller="RatingsController as rating">
+  <ul>
+    <li ng-repeat="rating in rating.all">
+      <span ng-if="rating.todayRating.mood === 'happy'">:-)</span>
+      <span ng-if="rating.todayRating.mood  === 'ehh'">:-|</span>
+      <span ng-if="rating.todayRating.mood === 'sad'">:-(</span>
+    </li>
+  </ul>
+<section id="addRating" ng-controller= "addRatingController as todayRating">
+</section>
+  <form class="add-rating" ng-submit="rating.add()">
+    <p>
+      <strong>How's your happiness today?</strong><br/> Click one to pick it, then save.
+    </p>
+    <div>
+      <input type="radio" value="1" name="rating" id="rating+1" ng-model="rating.todayRating.mood">
+      <label for="rating+1">:-)</label>
+    </div>
+    <div>
+      <input type="radio" value="0" name="rating" id="rating=0" ng-model="rating.todayRating.mood">
+      <label for="rating=0">:-|</label>
+    </div>
+    <div>
+      <input type="radio" value="-1" name="rating" id="rating-1" ng-model="rating.todayRating.mood">
+      <label for="rating-1">:-(</label>
+    </div>
+        <div ng-repeat="value in [1, 1] track by $index"></div>
+    <input type="submit" value="Save My Happiness">
+  </form>
+</section>
+  </body>
+</html>

@@ -13,7 +13,6 @@ var operator = req.params.operator
 
 var sum = (number1 + number2);
 
-
   res.send(sum.toString());
 
 // res.render('math.hbs');
@@ -26,7 +25,11 @@ app.get('/greeting/:name', function(req, res) {
 res.send(customGreeting)
 });
 
+app.get('/reverse', function(req, res) {
+ var words = (req.query.words)
+ res.send(words.reverse());
 
+});
 var port = process.env.PORT || 3000;
 
 app.listen(port, function(){

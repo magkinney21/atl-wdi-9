@@ -28,7 +28,11 @@ function loginUser(req, res, next) {
 }
 
 function authorize(req, res, next) {
-
+ var currentUser || currentUser._id !== req.params.id {
+ res.send({status.401})
+}else{
+  next()
+}
 };
 
 module.exports = {

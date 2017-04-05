@@ -15,10 +15,13 @@
 
       <ul id="presidents">
         <li ng-repeat="president in presidents.all">
-          <strong>{{president.name}}</strong> <em>({{president.start}} - {{president.end}})</em>
+          <strong>{{president.name}}</strong> <em>({{president.start}} - {{president.end}})</em> <span id="x"><button ng-click="presidents.deletePresident($index)">X</button></span>
         </li>
-      </ul>
 
+      </ul>
+      <div ng-if="presidents.loadingAll">
+      Loading...
+      </div>
       <form class="add-president" ng-submit='presidents.addPresident()'>
         <div>
           <label for="new-president-name">President's Name</label>

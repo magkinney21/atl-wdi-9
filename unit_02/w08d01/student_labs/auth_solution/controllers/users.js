@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
   });
 })
 
-router.get('/:id', function(req, res) {
+router.get('/:id', authhelpers.authorize, function(req, res) {
   User.findById(req.params.id)
   .exec(function(err, user) {
     if (err) console.log(err);

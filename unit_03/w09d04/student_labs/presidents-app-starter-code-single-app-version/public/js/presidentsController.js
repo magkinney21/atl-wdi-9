@@ -1,19 +1,57 @@
 angular.module('ThePresidentsApp')
   .controller('PresidentsController', PresidentsController);
 
-function PresidentsController(){
-  this.all = [
-    {name: 'George Washington', start: 1789, end: 1797 },
-    {name: 'John Adams', start: 1797, end: 1801 },
-    {name: 'Thomas Jefferson', start: 1801, end: 1809 },
-    {name: 'James Madison', start: 1809, end: 1817 },
-    {name: 'Joshua Quincy Kushner', start: 2021, end: 2029 },
-  ];
-  this.addPresident = addPresident;
-  this.newPresident = {};
 
-  function addPresident(){
-    this.all.push(this.newPresident);
-    this.newPresident = {};
+  PresidentsController.$inject= ['$http'];
+  function PresidentsController($http){
+  var vm = this;
+
+
+   vm.addPresident = addPresident;
+   vm.all = [];
+   vm.loadingAll = true;
+   vm.newPresident = {};
+   vm.deletePresident = deletePresident;
+
+  activate();
+
+  function activate() {
+    loadAllPresidents();
   }
+
+  //Todo: add presidents #create connection
+  function addPresident(){
+    console.log('Adding...');
+    console.log(vm.newPresident);
+
+    $http
+      .post('/presidents', vm.newPresident)
+      .then(function someName(response){
+        vm.all.push(response.data.president);
+        vm.newPresident= {};
+      });
+      // .catch(function catch(err){
+      //   console.log(err);
+      // });
+  }
+  function loadAllPresidents() {
+      $http
+  .get('/presidents')
+  .then(function handelSuccess (response){
+    vm.all =response.data.presidents;
+    vm.loadingAll = false;
+  }, function handelError(err) {
+    vm.loadingAll = false;
+   });
+  }
+  function deletePresident(index) {
+    var id = vm.all[index]._id
+      $http
+  .delete('/presidents/' + id)
+
+  .then(function (response){
+  vm.all.splice(index, 1);
+        });
+    }
 }
+

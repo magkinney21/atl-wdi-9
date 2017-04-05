@@ -25,7 +25,7 @@ router.post('/', function createLists(req, res){
 
       user.Lists.push(newList)
 
-      user.save(function (err) {
+      newList.save(function (err) {
         if (err) console.log(err);
         console.log('List Created')
       });

@@ -16,7 +16,9 @@ router.post('/', function(req, res){
 
   gif.save(function(err, gif){
     if (err) console.log(err);
+    res.json({status: 201, data: "succesful creation"})
   });
+
 });
 
 module.exports = router;

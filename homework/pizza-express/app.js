@@ -8,14 +8,14 @@ var hbs = require('hbs');
 app.set("view engine", "hbs");
 app.set('views', './views');
 
-var indexController = require(__dirname + '/controllers/index_controller.js');
+var indexController = require(__dirname + '/controller/index_controller.js');
 app.use("/", indexController);
 
-var toppingsController = require(__dirname + '/controllers/toppings_controller.js');
+var toppingsController = require(__dirname + '/controller/toppings_controller.js');
 app.use("/topping", toppingsController);
 
 
-var orderController = require(__dirname + '/controllers/order_controller.js');
+var orderController = require(__dirname + '/controller/order_controller.js');
 app.use("/order", orderController);
 
 

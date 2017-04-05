@@ -6,7 +6,7 @@ router.get('/', function(req, res) {
     res.render("index.hbs", {
     message: "Welcome to Pizza Express!"
   });
-  });
+});
 
 
 

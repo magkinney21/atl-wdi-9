@@ -11,10 +11,10 @@ var ItemSchema = new Schema({
 var UserSchema = new Schema({
   first_name: String,
   last_name: String,
-  email: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },//validation items you can add
   created_at: Date,
   updated_at: Date,
-  items: [ItemSchema]
+  items: [ItemSchema]//inbedded in userSchema
 });
 
 UserSchema.pre('save', function(next){
