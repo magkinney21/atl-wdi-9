@@ -8,9 +8,12 @@
 
 		<!-- Reference for Gerry -->
     <!-- <em>{{criminal.crime}}</em> -->
-    
-    <span ng-if="criminal.status" class='status {{criminal.status | lowercase }}'>{{criminal.status | uppercase}}</span>
 
-    <a>Click to see their crime (in users#show)</a>
+<!--     <span ng-if="criminal.status" class='status {{criminal.status | lowercase }}'>{{criminal.status | uppercase}}</span>
+ -->
+    <a ui-sref="criminalsShow({criminalId: criminal._id})">Click to see crimes</a>
+    <button class='delete' ng-click="$ctrl.deleteCriminal(criminal._id)">X</button>
+   <!--  inside ng repeat to loop over gave it a temmp var name criminal and then need to
+    see their id thats from app.js  -->
   </li>
 </ul>
